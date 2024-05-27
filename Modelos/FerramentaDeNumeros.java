@@ -91,7 +91,7 @@ public class FerramentaDeNumeros {
      * Aqui acontece o jogo de milhar onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public static void ValidaEscolhaMilhar(int numeroAleatorioEmMilhar) {
+    public static int ValidaEscolhaMilhar(int numeroAleatorioEmMilhar) {
 
         do { // Valida escolha Milhar
              numeroDoUsuario = Integer
@@ -106,33 +106,11 @@ public class FerramentaDeNumeros {
                 entradaValida = true;
             }
         } while (!entradaValida);
-
-        numeroDesmembradoMilhar = desmembrarNumero(numeroAleatorioEmMilhar, "milhar");
-
-        Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver Jogos) = 1 , (Finalizar) = 2 
-
-        if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a ação
-        {
-            System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
-
-            // // se o numero apostado for igual ao numero desmebrado
-            if (numeroApostadoMilhar == numeroDesmembradoMilhar) {
-                JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto1_3
-                        + numeroAleatorioEmMilhar);
-                System.out.println("Numero que o usuario digitou: " + numeroApostadoMilhar);
-
-                TelaDeResultadosPreco();
-
-            } else {
-                // Caso o numero sorteado em milhar esteja errado
-                JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto1_4
-                        + numeroAleatorioEmMilhar);
-                System.out.println("Numero que o usuario digitou: " + numeroApostadoMilhar);
-            }
-            PremiaMilhar(numeroAleatorioEmMilhar);
-        }
-
+        
+        return numeroApostadoMilhar;
     }
+
+
 
     // Metodo que paga ao usuario o premio dele
     private static void PremiaMilhar(int numeroAleatorioEmMilhar) {
@@ -189,7 +167,7 @@ public class FerramentaDeNumeros {
         numeroDesmembradoCentena = desmembrarNumero(numeroAleatorioEmMilhar, "centena");
 
         Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões
-
+        
         if (Botoes.salvaNovoJogoFinalizar == 2) // Aqui é utilizado o valor dos botões para autorizar a ação
         {
             System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
