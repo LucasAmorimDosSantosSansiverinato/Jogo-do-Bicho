@@ -1,6 +1,6 @@
 package Modelos;
 
-import java.util.ArrayList;
+
 
 // import java.util.Random;
 import javax.swing.JOptionPane;
@@ -45,7 +45,7 @@ public class FerramentaDeNumeros {
     public static void main(String[] args) {
 
         desmembrarNumero(numeroSorteado, "");
-        ValidaEscolhaMilhar(numeroSorteado);
+        
 
     }
 
@@ -91,7 +91,7 @@ public class FerramentaDeNumeros {
      * Aqui acontece o jogo de milhar onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public static int ValidaEscolhaMilhar(int numeroAleatorioEmMilhar) {
+    public static int ValidaEscolhaMilhar() {
 
         do { // Valida escolha Milhar
              numeroDoUsuario = Integer
@@ -110,45 +110,46 @@ public class FerramentaDeNumeros {
         return numeroApostadoMilhar;
     }
 
-
+    
 
     // Metodo que paga ao usuario o premio dele
-    private static void PremiaMilhar(int numeroAleatorioEmMilhar) {
-        System.out.println("\nAcessou o metodo PremiaMilhar\n");
+    // private static void PremiaMilhar() {
+    //     System.out.println("\nAcessou o metodo PremiaMilhar\n");
 
-        if (numeroApostadoMilhar == numeroDesmembradoMilhar) {
-            // 10 Reais
-            if (Botoes.salvaValor == 0) {
-                premio += 10000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+        
+    //     if (numeroApostadoMilhar == numeroDesmembradoMilhar) {
+    //         // 10 Reais
+    //         if (Botoes.salvaValor == 0) {
+    //             premio += 10000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
 
-            } // 20 reais
-            else if (Botoes.salvaValor == 1) {
-                premio += 20000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 30 reais
-            else if (Botoes.salvaValor == 2) {
-                premio += 30000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 40 reais
-            else if (Botoes.salvaValor == 3) {
-                premio += 40000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            }
-            premio = 0;
-        }
+    //         } // 20 reais
+    //         else if (Botoes.salvaValor == 1) {
+    //             premio += 20000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 30 reais
+    //         else if (Botoes.salvaValor == 2) {
+    //             premio += 30000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 40 reais
+    //         else if (Botoes.salvaValor == 3) {
+    //             premio += 40000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         }
+    //         premio = 0;
+    //     }
 
-    }
+    // }
 
     /*
      * Aqui acontece o jogo de Centena onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public static void ValidaEscolhaCentena(int numeroAleatorioEmMilhar) {
+    public static int ValidaEscolhaCentena() {
 
         do { // Valida escolha Centena
              numeroDoUsuario = Integer
@@ -164,75 +165,48 @@ public class FerramentaDeNumeros {
             }
         } while (!entradaValida);
 
-        numeroDesmembradoCentena = desmembrarNumero(numeroAleatorioEmMilhar, "centena");
-
-        Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões
-        
-        if (Botoes.salvaNovoJogoFinalizar == 2) // Aqui é utilizado o valor dos botões para autorizar a ação
-        {
-            System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
-
-            // se o numero apostado for igual ao numero desmebrado
-            if (numeroApostadoCentena == numeroDesmembradoCentena) {
-                JOptionPane.showMessageDialog(null,
-                        FerramentaDeNumerosTexts.texto2_3 + numeroAleatorioEmMilhar % 1000);
-                // Mensage que acertou
-                System.out.println("Numero que o usuario digitou: " + numeroApostadoCentena);
-
-                TelaDeResultadosPreco();
-
-            } else {
-
-                // Caso o numero sorteado em centena esteja errado
-                JOptionPane.showMessageDialog(null,
-                        FerramentaDeNumerosTexts.texto2_4 + numeroAleatorioEmMilhar % 1000);
-
-                // Menssage que errou
-                System.out.println("Numero que o usuario digitou: " + numeroApostadoCentena);
-            }
-
-            PremiaCentena(numeroAleatorioEmMilhar);
-        }
-
+        return numeroApostadoCentena; 
     }
+
+    
 
     // Metodo que paga ao usuario o premio dele
-    public static void PremiaCentena(int numeroAleatorioEmMilhar) {
+    // public static void PremiaCentena(int numeroAleatorioEmMilhar) {
 
-        System.out.println("\nAcessou o metodo PremiaCentena\n");
+    //     System.out.println("\nAcessou o metodo PremiaCentena\n");
 
-        if (numeroApostadoCentena == numeroDesmembradoCentena) {
-            // 10 Reais
-            if (Botoes.salvaValor == 0) {
-                premio += 2000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 20 reais
-            else if (Botoes.salvaValor == 1) {
-                premio += 3000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 30 reais
-            else if (Botoes.salvaValor == 2) {
-                premio += 4000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 40 reais
-            else if (Botoes.salvaValor == 3) {
-                premio += 5000;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            }
-            premio = 0;
-        }
+    //     if (numeroApostadoCentena == numeroDesmembradoCentena) {
+    //         // 10 Reais
+    //         if (Botoes.salvaValor == 0) {
+    //             premio += 2000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 20 reais
+    //         else if (Botoes.salvaValor == 1) {
+    //             premio += 3000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 30 reais
+    //         else if (Botoes.salvaValor == 2) {
+    //             premio += 4000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 40 reais
+    //         else if (Botoes.salvaValor == 3) {
+    //             premio += 5000;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         }
+    //         premio = 0;
+    //     }
 
-    }
+    // }
 
     /*
      * Aqui acontece o jogo de Dezena onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public static void ValidaEscolhaDezena(int numeroAleatorioEmMilhar) {
+    public static int ValidaEscolhaDezena() {
 
         do {
             // Valida escolha Dezena
@@ -249,62 +223,40 @@ public class FerramentaDeNumeros {
             }
         } while (!entradaValida);
 
-        numeroDesmembradoDezena = desmembrarNumero(numeroAleatorioEmMilhar, "dezena");
-
-        Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões
-
-        if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a ação
-        {
-            System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
-            // se o numero apostado for igual ao numero desmebrado
-            if (numeroApostadoDezena == numeroDesmembradoDezena) {
-                JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto3_3
-                        + numeroAleatorioEmMilhar % 100);
-                System.out.println("Numero que o usuario digitou: " + numeroApostadoDezena);
-
-                TelaDeResultadosPreco();
-
-            } else {
-
-                // Caso o numero sorteado em centena esteja errado
-                JOptionPane.showMessageDialog(null,
-                        FerramentaDeNumerosTexts.texto3_4 + numeroAleatorioEmMilhar % 100);
-                System.out.println("Numero que o usuario digitou: " + numeroApostadoDezena);
-            }
-            PremiaDezena(numeroAleatorioEmMilhar);
-        }
+        return numeroApostadoDezena;
+        //     PremiaDezena(numeroAleatorioEmMilhar);  
     }
 
-    public static void PremiaDezena(int numeroAleatorioEmMilhar) {
-        System.out.println("\nAcessou o metodo PremiaDezena\n");
+    // public static void PremiaDezena(int numeroAleatorioEmMilhar) {
+    //     System.out.println("\nAcessou o metodo PremiaDezena\n");
 
-        if (numeroApostadoDezena == numeroDesmembradoDezena) {
+    //     if (numeroApostadoDezena == numeroDesmembradoDezena) {
 
-            // 10 Reais
-            if (Botoes.salvaValor == 0) {
-                premio += 100;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 20 reais
-            else if (Botoes.salvaValor == 1) {
-                premio += 200;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 30 reais
-            else if (Botoes.salvaValor == 2) {
-                premio += 300;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            } // 40 reais
-            else if (Botoes.salvaValor == 3) {
-                premio += 400;
-                novaCarteira.depositarPremioNaCarteira(premio);
-                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-            }
-            premio = 0;
-        }
+    //         // 10 Reais
+    //         if (Botoes.salvaValor == 0) {
+    //             premio += 100;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 20 reais
+    //         else if (Botoes.salvaValor == 1) {
+    //             premio += 200;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 30 reais
+    //         else if (Botoes.salvaValor == 2) {
+    //             premio += 300;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         } // 40 reais
+    //         else if (Botoes.salvaValor == 3) {
+    //             premio += 400;
+    //             novaCarteira.depositarPremioNaCarteira(premio);
+    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+    //         }
+    //         premio = 0;
+    //     }
 
-    }
+    // }
 
     public static void resultadoDeTodosOsJogos(int numeroAleatorioEmMilhar) {
 
@@ -371,51 +323,5 @@ public class FerramentaDeNumeros {
 
     }
 
-    public static void TelaDeResultadosPreco() {
-
-        // System.out.println(
-        //         """
-        //                 \n    //
-        //                     //
-        //                     //
-        //                     Apartir daq é array
-        //                     //
-        //                     //
-        //                     //
-        //                 """);
-
-         //var novoCarroDeAposta = new CarrinhoDeAposta();
-
-       // Numeros Inseridos pelo usuario são adicionados a classe Carrinho de apostas por aqui
-        
-    //     novoCarroDeAposta.setNumeroInseridoPeloUsuario(FerramentaDeNumeros.numeroApostadoMilhar);
-    //     novoCarroDeAposta.setNumeroInseridoPeloUsuario(FerramentaDeNumeros.numeroApostadoCentena);
-    //     novoCarroDeAposta.setNumeroInseridoPeloUsuario(FerramentaDeNumeros.numeroApostadoDezena);
-
-    //    // Numeros gerados aleatoriomente pelo computador sâo adicionados a classe Carrinho de apostas aqui
-        
-    //     novoCarroDeAposta.setNumeroGeradoAleatorio(FerramentaDeNumeros.numeroDesmembradoMilhar);
-    //     novoCarroDeAposta.setNumeroGeradoAleatorio(FerramentaDeNumeros.numeroDesmembradoCentena);
-    //     novoCarroDeAposta.setNumeroGeradoAleatorio(FerramentaDeNumeros.numeroDesmembradoDezena);
-
-        // // Modalidades de apostas como: Animal, Milhar, Centena, Dezena
-
-       
-        // listaDeApostas.add(novoCarroDeAposta);
-        // System.out.println("Testando array: " + listaDeApostas.get(0).toString());
-        // System.out.println("\nQuantidade de itens dentro do array: " + listaDeApostas.size());
-
-        // System.out.println(
-        //         """
-        //                  \n     //
-        //                     //
-        //                     //
-        //                     Acabou o Array
-        //                     //
-        //                     //
-        //                     //
-        //                 """);
-
-    }
-
+  
 }

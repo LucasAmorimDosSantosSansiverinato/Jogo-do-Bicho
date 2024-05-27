@@ -16,6 +16,12 @@ import java.awt.Font;
 public class TabelaAnimal extends JFrame {
     static int premio;
 
+    static String mostraAnimalSorteado="";
+
+    static int numeroDoAnimalSorteado;
+
+    static int numeroQueUsuarioEscolheu;
+
     private static final String[] ANIMAIS = {
             "Avestruz", "Águia", "Burro", "Borboleta", "Cachorro",
             "Cabra", "Carneiro", "Camelo", "Cobra", "Coelho",
@@ -39,6 +45,12 @@ public class TabelaAnimal extends JFrame {
         int numeroSorteado = gerarNumeroAleatorio();
         String animalSorteado = encontrarAnimal(numeroSorteado);
 
+        // numero aleatorio
+        numeroDoAnimalSorteado = numeroSorteado;
+
+        // Animal
+        mostraAnimalSorteado=animalSorteado;
+
         // Obter a aposta do usuário
         boolean entradaValida = false;
         while (!entradaValida) {
@@ -50,6 +62,7 @@ public class TabelaAnimal extends JFrame {
             }
             try {
                 int numAposta = Integer.parseInt(aposta);
+                numeroQueUsuarioEscolheu=numAposta;
                 if (numAposta < 1 || numAposta > 25) {
                     JOptionPane.showMessageDialog(null, "Número inválido. Por favor, digite um número entre 1 e 25.");
                 } else {

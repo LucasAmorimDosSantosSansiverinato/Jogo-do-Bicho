@@ -1,11 +1,8 @@
 package Modelos;
 
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import Library.ExecutarTexts;
-import Library.FerramentaDeNumerosTexts;
 import Usuario.CarteiraDoUsuario;
 
 public class Execucao {
@@ -23,6 +20,8 @@ public class Execucao {
         var numeroDesmembrado = 0;
         var numeroEscolhido = 0;
         boolean novojogo = false;
+
+        String tipo = null;
 
         while (true) {
 
@@ -45,11 +44,11 @@ public class Execucao {
                 JOptionPane.showMessageDialog(null, ExecutarTexts.texto1);
                 return 0;
             }
-            
 
             switch (novoBotao.getEstiloDeJogo()) {
 
                 case 0: // Tabela Animal
+                    tipo = "animal";
                     JOptionPane.showMessageDialog(null,
                             """
                                     Para animal:
@@ -65,7 +64,9 @@ public class Execucao {
                     // Executa a class onde estão o animais
                     TabelaAnimal.main(null);
                     break;
+
                 case 1: // Milhar
+                    tipo = "numero";
                     JOptionPane.showMessageDialog(null,
                             """
                                     Para Milhar:
@@ -77,17 +78,16 @@ public class Execucao {
                     // Leva até o metodo que faz a cobrança para jogar
                     FerramentaDeNumeros.valorDosJogos();
 
+                    // Faz a validação de qual é o estilo de jogo e desmembra o numero de acordo
                     numeroDesmembrado = FerramentaDeNumeros.desmembrarNumero(numeroAleatorio, "milhar");
-                    // Leva até metodo que valida a escolha em milhar
-                    numeroEscolhido = FerramentaDeNumeros.ValidaEscolhaMilhar(numeroAleatorio);
-                    
-                    // Vê o reultado dos outros Jogos
-                    if (novoBotao.verOutrosJogos() == JOptionPane.YES_OPTION) {
 
-                        FerramentaDeNumeros.resultadoDeTodosOsJogos(numeroAleatorio);
-                    }
+                    // Atribui o valor do retorn da ValidaEscolha a variavel
+                    numeroEscolhido = FerramentaDeNumeros.ValidaEscolhaMilhar();
                     break;
+
                 case 2:// Centena
+                    tipo = "numero";
+
                     JOptionPane.showMessageDialog(null,
                             """
                                     Para Centena:
@@ -99,15 +99,17 @@ public class Execucao {
                     // Leva até o metodo que faz a cobrança para jogar
                     FerramentaDeNumeros.valorDosJogos();
 
-                    // Leva até metodo que valida a escolha em milhar
-                    FerramentaDeNumeros.ValidaEscolhaCentena(FerramentaDeNumeros.numeroAleatorioEmMilhar());
+                    // Faz a validação de qual é o estilo de jogo e desmembra o numero de acordo
+                    numeroEscolhido = FerramentaDeNumeros.desmembrarNumero(numeroAleatorio, "centena");
 
-                    // Vê o reultado dos outros Jogos
-                    if (novoBotao.verOutrosJogos() == JOptionPane.YES_OPTION) {
-                        FerramentaDeNumeros.resultadoDeTodosOsJogos(FerramentaDeNumeros.numeroAleatorioEmMilhar());
-                    }
+                    // Atribui o valor do retorn da ValidaEscolha a variavel
+                    numeroDesmembrado = FerramentaDeNumeros.ValidaEscolhaCentena();
+
                     break;
+
                 case 3:// Dezena
+                    tipo = "numero";
+
                     JOptionPane.showMessageDialog(null,
                             """
                                     Para Dezena:
@@ -119,15 +121,11 @@ public class Execucao {
                     // Leva até o metodo que faz a cobrança para jogar
                     FerramentaDeNumeros.valorDosJogos();
 
-                    // Leva até metodo que valida a escolha em milhar
-                    FerramentaDeNumeros.ValidaEscolhaDezena(FerramentaDeNumeros.numeroAleatorioEmMilhar());
+                    // Faz a validação de qual é o estilo de jogo e desmembra o numero de acordo
+                    numeroEscolhido = FerramentaDeNumeros.desmembrarNumero(numeroAleatorio, "dezena");
 
-                    // Vê o reultado dos outros Jogos
-                    if (novoBotao.verOutrosJogos() == JOptionPane.YES_OPTION) {
-                        FerramentaDeNumeros.resultadoDeTodosOsJogos(FerramentaDeNumeros.numeroAleatorioEmMilhar());
-                    }
-
-                    System.exit(0);
+                    // Atribui o valor do retorn da ValidaEscolha a variavel
+                    numeroDesmembrado = FerramentaDeNumeros.ValidaEscolhaDezena();
                     break;
 
                 case 4:
@@ -139,40 +137,62 @@ public class Execucao {
                 default:
             }
 
-            CarrinhoDeAposta novaAposta = new CarrinhoDeAposta(FerramentaDeNumeros.numeroDoUsuario,FerramentaDeNumeros.tipoDeJogo, FerramentaDeNumeros.precoTickt);
-            listaDeApostas.add(novaAposta);
+            if (tipo.equals("animal")) {
 
-            for (var aposta : listaDeApostas){
-                System.out.println("Numero Apostado: " + aposta.numeroInseridoPeloUsuario + "\n Modalidade Apostada: " + aposta.modalidadeDeJogo);
-            }
-
-            Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver Jogos) = 1 , (Finalizar) = 2 
-            
-            if (Botoes.salvaNovoJogoFinalizar == 0){
-                novojogo = true;
-            }
-
-            else if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a ação
-            {
-                System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
-
-                // // se o numero apostado for igual ao numero desmebrado
-                for (var aposta : listaDeApostas){
-                    if (aposta.numeroInseridoPeloUsuario == numeroDesmembrado) {
-                        JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto1_3
-                                + numeroAleatorio);
-                        System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
-
-                        FerramentaDeNumeros.TelaDeResultadosPreco();
+                CarrinhoDeAposta outroAposta = new CarrinhoDeAposta(TabelaAnimal.numeroDoAnimalSorteado,TabelaAnimal.mostraAnimalSorteado,TabelaAnimal.numeroQueUsuarioEscolheu);
+                listaDeApostas.add(outroAposta);
+                for(var apostaAnimal : listaDeApostas){
                     
-                    } else {
-                        // Caso o numero sorteado em milhar esteja errado
-                        JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto1_4
-                                + numeroAleatorio);
-                        System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
-                    }
                 }
-                //FerramentaDeNumeros.PremiaMilhar(numeroAleatorio);
+
+            } else if (tipo.equals("numero")) {
+
+                CarrinhoDeAposta novaAposta = new CarrinhoDeAposta(FerramentaDeNumeros.numeroDoUsuario,
+                        FerramentaDeNumeros.tipoDeJogo, FerramentaDeNumeros.precoTickt);
+                listaDeApostas.add(novaAposta);
+
+                for (var aposta : listaDeApostas) {
+                    System.out
+                            .println("Numero Apostado: " + aposta.numeroInseridoPeloUsuario + "\n Modalidade Apostada: "
+                                    + aposta.modalidadeDeJogo);
+                }
+
+                Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver
+                                           // Jogos)
+                                           // = 1 , (Finalizar) = 2
+
+                if (Botoes.salvaNovoJogoFinalizar == 0) {
+                    novojogo = true;
+                }
+
+                else if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a ação
+                {
+                    System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
+
+                    for (var aposta : listaDeApostas) {
+                        if (aposta.numeroInseridoPeloUsuario == numeroDesmembrado) {
+                            // se o numero apostado for igual ao numero desmebrado
+
+                            JOptionPane.showMessageDialog(null, "Numero apostado: " + aposta.numeroInseridoPeloUsuario
+                                    + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                    + aposta.valorPagoPeloUsuario + "\n\n\nResultado: " + numeroDesmembrado
+                                    + "\n\nParabens você ganhou!!");
+
+                            System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
+
+                        } else {
+                            // Caso o numero sorteado esteja errado
+
+                            JOptionPane.showMessageDialog(null, "Numero apostado: " + aposta.numeroInseridoPeloUsuario
+                                    + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                    + aposta.valorPagoPeloUsuario + "\n\n\nResultado: " + numeroDesmembrado
+                                    + "\n\nDesculpe vc errou");
+
+                            System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
+                        }
+                    }
+
+                }
             }
 
         }

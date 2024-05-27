@@ -9,7 +9,6 @@ public class CarrinhoDeAposta {
     String modalidadeDeJogo;
 
     // Contrutor
-
     public CarrinhoDeAposta(int _numeroInseridoPeloUsuario, String _modalidadeDeJogo, int _valorPagoPeloUsuario) {
         
         this.modalidadeDeJogo = _modalidadeDeJogo;
