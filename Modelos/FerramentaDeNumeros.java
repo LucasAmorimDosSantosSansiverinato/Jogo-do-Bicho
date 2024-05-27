@@ -113,37 +113,37 @@ public class FerramentaDeNumeros {
     
 
     // Metodo que paga ao usuario o premio dele
-    // private static void PremiaMilhar() {
-    //     System.out.println("\nAcessou o metodo PremiaMilhar\n");
+    private static void PremiaMilhar() {
+        System.out.println("\nAcessou o metodo PremiaMilhar\n");
 
         
-    //     if (numeroApostadoMilhar == numeroDesmembradoMilhar) {
-    //         // 10 Reais
-    //         if (Botoes.salvaValor == 0) {
-    //             premio += 10000;
-    //             novaCarteira.depositarPremioNaCarteira(premio);
-    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+        if (numeroApostadoMilhar == numeroDesmembradoMilhar) {
+            // 10 Reais
+            if (Botoes.salvaValor == 0) {
+                premio += 10000;
+                novaCarteira.depositarPremioNaCarteira(premio);
+                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
 
-    //         } // 20 reais
-    //         else if (Botoes.salvaValor == 1) {
-    //             premio += 20000;
-    //             novaCarteira.depositarPremioNaCarteira(premio);
-    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-    //         } // 30 reais
-    //         else if (Botoes.salvaValor == 2) {
-    //             premio += 30000;
-    //             novaCarteira.depositarPremioNaCarteira(premio);
-    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-    //         } // 40 reais
-    //         else if (Botoes.salvaValor == 3) {
-    //             premio += 40000;
-    //             novaCarteira.depositarPremioNaCarteira(premio);
-    //             JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-    //         }
-    //         premio = 0;
-    //     }
+            } // 20 reais
+            else if (Botoes.salvaValor == 1) {
+                premio += 20000;
+                novaCarteira.depositarPremioNaCarteira(premio);
+                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+            } // 30 reais
+            else if (Botoes.salvaValor == 2) {
+                premio += 30000;
+                novaCarteira.depositarPremioNaCarteira(premio);
+                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+            } // 40 reais
+            else if (Botoes.salvaValor == 3) {
+                premio += 40000;
+                novaCarteira.depositarPremioNaCarteira(premio);
+                JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+            }
+            premio = 0;
+        }
 
-    // }
+    }
 
     /*
      * Aqui acontece o jogo de Centena onde é relizada valição do numero inserido

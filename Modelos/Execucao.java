@@ -137,6 +137,7 @@ public class Execucao {
                 default:
             }
 
+            // Opção para mostrar o resultado da aposta em Animal 
             if (tipo.equals("animal")) {
 
                 CarrinhoDeAposta outroAposta = new CarrinhoDeAposta(TabelaAnimal.numeroQueUsuarioEscolheu,
@@ -151,7 +152,7 @@ public class Execucao {
                                 "Que pena! Você perdeu! O animal sorteado foi: " + TabelaAnimal.mostraAnimalSorteado);
                     }
                 }
-
+                // Opção para mostrar o resultado da aposta em Numeros
             } else if (tipo.equals("numero")) {
 
                 CarrinhoDeAposta novaAposta = new CarrinhoDeAposta(FerramentaDeNumeros.numeroDoUsuario,
@@ -164,17 +165,15 @@ public class Execucao {
                                     + aposta.modalidadeDeJogo);
                 }
 
-                Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver
-                                           // Jogos)
-                                           // = 1 , (Finalizar) = 2
+                Botoes.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver Jogos) = 1 , (Finalizar) = 2
+                                        
 
                 if (Botoes.salvaNovoJogoFinalizar == 0) {
                     novojogo = true;
                 } else if (Botoes.salvaNovoJogoFinalizar == 1) {
                     for (var VerAposta : listaDeApostas) {
 
-                        // se o numero apostado for igual ao numero desmebrado
-
+                        // Mostra ao usuario as apostas feitas antes de Finalizar
                         JOptionPane.showMessageDialog(null,
                                 "Numero apostado: " + VerAposta.numeroInseridoPeloUsuario
                                         + "\nEstilo de Jogo: " + VerAposta.modalidadeDeJogo + "\nValor pago: "
@@ -184,8 +183,8 @@ public class Execucao {
                     }
                 }
 
-                else if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para
-                                                            // autorizar a ação
+                // Opção para Finalizar e mostrar o resultado das apostas
+                else if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a ação
                 {
                     System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
 
@@ -193,6 +192,8 @@ public class Execucao {
                         if (aposta.numeroInseridoPeloUsuario == numeroDesmembrado) {
                             // se o numero apostado for igual ao numero desmebrado
 
+
+                            // Esse painel mostra o resultado de uma aposta por vez, quero mudar para mostrar de todas ao msm tempo
                             JOptionPane.showMessageDialog(null,
                                     "Numero apostado: " + aposta.numeroInseridoPeloUsuario
                                             + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
@@ -205,6 +206,8 @@ public class Execucao {
                         } else {
                             // Caso o numero sorteado esteja errado
 
+
+                             // Esse painel mostra o resultado de uma aposta por vez, quero mudar para mostrar de todas ao msm tempo
                             JOptionPane.showMessageDialog(null,
                                     "Numero apostado: " + aposta.numeroInseridoPeloUsuario
                                             + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
