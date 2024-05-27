@@ -62,7 +62,9 @@ public class TabelaAnimal extends JFrame {
             }
             try {
                 int numAposta = Integer.parseInt(aposta);
-                numeroQueUsuarioEscolheu=numAposta;
+
+                numeroQueUsuarioEscolheu = numAposta;
+
                 if (numAposta < 1 || numAposta > 25) {
                     JOptionPane.showMessageDialog(null, "Número inválido. Por favor, digite um número entre 1 e 25.");
                 } else {
@@ -78,7 +80,7 @@ public class TabelaAnimal extends JFrame {
 
         // Exibir o resultado
         if (aposta.equalsIgnoreCase(dezenaSorteada)) {
-            JOptionPane.showMessageDialog(null, "Parabéns! Você ganhou! O animal sorteado foi: " + animalSorteado);
+            
 
             // 10 Reais
             if (Botoes.salvaValor == 0) {
@@ -100,9 +102,7 @@ public class TabelaAnimal extends JFrame {
 
             
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Que pena! Você perdeu! O animal sorteado foi: " + animalSorteado);
-        }
+        } 
     }
 
     // Método para exibir a tabela de animais com seus respectivos números

@@ -139,10 +139,17 @@ public class Execucao {
 
             if (tipo.equals("animal")) {
 
-                CarrinhoDeAposta outroAposta = new CarrinhoDeAposta(TabelaAnimal.numeroDoAnimalSorteado,TabelaAnimal.mostraAnimalSorteado,TabelaAnimal.numeroQueUsuarioEscolheu);
+                CarrinhoDeAposta outroAposta = new CarrinhoDeAposta(TabelaAnimal.numeroQueUsuarioEscolheu,
+                        TabelaAnimal.mostraAnimalSorteado, TabelaAnimal.numeroDoAnimalSorteado);
                 listaDeApostas.add(outroAposta);
-                for(var apostaAnimal : listaDeApostas){
-                    
+                for (var apostaAnimal : listaDeApostas) {
+                    if (apostaAnimal.numeroInseridoPeloUsuario == TabelaAnimal.numeroDoAnimalSorteado) {
+                        JOptionPane.showMessageDialog(null,
+                                "Parabéns! Você ganhou! O animal sorteado foi: " + TabelaAnimal.mostraAnimalSorteado);
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Que pena! Você perdeu! O animal sorteado foi: " + TabelaAnimal.mostraAnimalSorteado);
+                    }
                 }
 
             } else if (tipo.equals("numero")) {
@@ -163,9 +170,22 @@ public class Execucao {
 
                 if (Botoes.salvaNovoJogoFinalizar == 0) {
                     novojogo = true;
+                } else if (Botoes.salvaNovoJogoFinalizar == 1) {
+                    for (var VerAposta : listaDeApostas) {
+
+                        // se o numero apostado for igual ao numero desmebrado
+
+                        JOptionPane.showMessageDialog(null,
+                                "Numero apostado: " + VerAposta.numeroInseridoPeloUsuario
+                                        + "\nEstilo de Jogo: " + VerAposta.modalidadeDeJogo + "\nValor pago: "
+                                        + VerAposta.valorPagoPeloUsuario);
+
+                                        novojogo=true;
+                    }
                 }
 
-                else if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a ação
+                else if (Botoes.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para
+                                                            // autorizar a ação
                 {
                     System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
 
@@ -173,20 +193,24 @@ public class Execucao {
                         if (aposta.numeroInseridoPeloUsuario == numeroDesmembrado) {
                             // se o numero apostado for igual ao numero desmebrado
 
-                            JOptionPane.showMessageDialog(null, "Numero apostado: " + aposta.numeroInseridoPeloUsuario
-                                    + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
-                                    + aposta.valorPagoPeloUsuario + "\n\n\nResultado: " + numeroDesmembrado
-                                    + "\n\nParabens você ganhou!!");
+                            JOptionPane.showMessageDialog(null,
+                                    "Numero apostado: " + aposta.numeroInseridoPeloUsuario
+                                            + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                            + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
+                                            + numeroDesmembrado
+                                            + "\n\nParabens vc acertoou!!");
 
                             System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
 
                         } else {
                             // Caso o numero sorteado esteja errado
 
-                            JOptionPane.showMessageDialog(null, "Numero apostado: " + aposta.numeroInseridoPeloUsuario
-                                    + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
-                                    + aposta.valorPagoPeloUsuario + "\n\n\nResultado: " + numeroDesmembrado
-                                    + "\n\nDesculpe vc errou");
+                            JOptionPane.showMessageDialog(null,
+                                    "Numero apostado: " + aposta.numeroInseridoPeloUsuario
+                                            + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                            + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
+                                            + numeroDesmembrado
+                                            + "\n\nDesculpe vc errou!!");
 
                             System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
                         }
