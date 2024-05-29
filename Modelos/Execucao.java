@@ -6,17 +6,47 @@ import Library.ExecutarTexts;
 import Usuario.CarteiraDoUsuario;
 
 public class Execucao {
+    
+    public ArrayList<CarrinhoDeAposta> listaDeApostas = new ArrayList<>();
 
-    public static int motor() {
+    // public void zerarApostas(){
+    //     listaDeApostas=null;
+    // }
 
-        ArrayList<CarrinhoDeAposta> listaDeApostas = new ArrayList<>();
+    public   int desmembrar(int num,String tipo){
+
+        String str= String.valueOf(num);
+        String resultado= "";
+     
+        if (tipo.equals("dezena")) {
+
+            resultado= str.substring(str.length() - 2,str.length());
+
+        }else if (tipo.equals("centena")) {
+            resultado= str.substring(str.length() - 3,str.length());
+
+        }else {
+            resultado= str.substring(str.length() - 4,str.length());
+        }
+
+
+         return Integer.parseInt(resultado);
+     
+     
+    }
+    public  int motor() {
+
+        FerramentaDeNumeros f1=new FerramentaDeNumeros();
+
+        
 
         Botoes novoBotao = new Botoes();
 
         CarteiraDoUsuario novaCarteira = new CarteiraDoUsuario();
         int contador = 0;
 
-        var numeroAleatorio = FerramentaDeNumeros.numeroAleatorioEmMilhar();
+
+        var numeroAleatorio = f1.numeroAleatorioEmMilhar();
         var numeroDesmembrado = 0;
         var numeroEscolhido = 0;
         boolean novojogo = false;
@@ -59,7 +89,7 @@ public class Execucao {
                                         """);
 
                     // Leva até o metodo que faz a cobrança para jogar
-                    FerramentaDeNumeros.valorDosJogos();
+                    f1.valorDosJogos();
 
                     // Executa a class onde estão o animais
                     TabelaAnimal.main(null);
@@ -76,13 +106,13 @@ public class Execucao {
                                     Se apostar R$ 40,00 = premio vai ser R$ 40.000,00!
                                         """);
                     // Leva até o metodo que faz a cobrança para jogar
-                    FerramentaDeNumeros.valorDosJogos();
+                    f1.valorDosJogos();
 
                     // Faz a validação de qual é o estilo de jogo e desmembra o numero de acordo
-                    numeroDesmembrado = FerramentaDeNumeros.desmembrarNumero(numeroAleatorio, "milhar");
+                    numeroDesmembrado = f1.desmembrarNumero( "milhar");
 
                     // Atribui o valor do retorn da ValidaEscolha a variavel
-                    numeroEscolhido = FerramentaDeNumeros.ValidaEscolhaMilhar();
+                    numeroEscolhido = f1.ValidaEscolhaMilhar();
                     break;
 
                 case 2:// Centena
@@ -97,13 +127,13 @@ public class Execucao {
                                     Se apostar R$ 40,00 = premio vai ser R$ 5.000,00!
                                         """);
                     // Leva até o metodo que faz a cobrança para jogar
-                    FerramentaDeNumeros.valorDosJogos();
+                    f1.valorDosJogos();
 
                     // Faz a validação de qual é o estilo de jogo e desmembra o numero de acordo
-                    numeroEscolhido = FerramentaDeNumeros.desmembrarNumero(numeroAleatorio, "centena");
+                    numeroEscolhido = f1.ValidaEscolhaCentena();
 
                     // Atribui o valor do retorn da ValidaEscolha a variavel
-                    numeroDesmembrado = FerramentaDeNumeros.ValidaEscolhaCentena();
+                    numeroDesmembrado = f1.desmembrarNumero("centena");
 
                     break;
 
@@ -119,13 +149,13 @@ public class Execucao {
                                     Se apostar R$ 40,00 = premio vai ser R$ 400,00!
                                         """);
                     // Leva até o metodo que faz a cobrança para jogar
-                    FerramentaDeNumeros.valorDosJogos();
+                    f1.valorDosJogos();
 
                     // Faz a validação de qual é o estilo de jogo e desmembra o numero de acordo
-                    numeroEscolhido = FerramentaDeNumeros.desmembrarNumero(numeroAleatorio, "dezena");
+                    numeroEscolhido = f1.ValidaEscolhaDezena();
 
                     // Atribui o valor do retorn da ValidaEscolha a variavel
-                    numeroDesmembrado = FerramentaDeNumeros.ValidaEscolhaDezena();
+                    numeroDesmembrado = f1.desmembrarNumero( "dezena");
                     break;
 
                 case 4:
@@ -135,6 +165,7 @@ public class Execucao {
                     break;
 
                 default:
+                
             }
 
             // Opção para mostrar o resultado da aposta em Animal 
@@ -155,8 +186,8 @@ public class Execucao {
                 // Opção para mostrar o resultado da aposta em Numeros
             } else if (tipo.equals("numero")) {
 
-                CarrinhoDeAposta novaAposta = new CarrinhoDeAposta(FerramentaDeNumeros.numeroDoUsuario,
-                        FerramentaDeNumeros.tipoDeJogo, FerramentaDeNumeros.precoTickt);
+                CarrinhoDeAposta novaAposta = new CarrinhoDeAposta(f1.numeroDoUsuario,
+                        f1.tipoDeJogo, f1.precoTickt);
                 listaDeApostas.add(novaAposta);
 
                 for (var aposta : listaDeApostas) {
@@ -170,7 +201,10 @@ public class Execucao {
 
                 if (Botoes.salvaNovoJogoFinalizar == 0) {
                     novojogo = true;
-                } else if (Botoes.salvaNovoJogoFinalizar == 1) {
+
+                } 
+                else if (Botoes.salvaNovoJogoFinalizar == 1) {
+                    
                     for (var VerAposta : listaDeApostas) {
 
                         // Mostra ao usuario as apostas feitas antes de Finalizar
@@ -189,34 +223,43 @@ public class Execucao {
                     System.out.println("\nAcessou o painel NovoJogo Finalizar\n");
 
                     for (var aposta : listaDeApostas) {
+
                         if (aposta.numeroInseridoPeloUsuario == numeroDesmembrado) {
                             // se o numero apostado for igual ao numero desmebrado
-
 
                             // Esse painel mostra o resultado de uma aposta por vez, quero mudar para mostrar de todas ao msm tempo
                             JOptionPane.showMessageDialog(null,
                                     "Numero apostado: " + aposta.numeroInseridoPeloUsuario
                                             + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
                                             + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
-                                            + numeroDesmembrado
+                                            + desmembrar(numeroAleatorio,aposta.modalidadeDeJogo)
                                             + "\n\nParabens vc acertoou!!");
 
                             System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
 
+ 
+      
+                                                   
+
+                        
+
                         } else {
                             // Caso o numero sorteado esteja errado
-
-
                              // Esse painel mostra o resultado de uma aposta por vez, quero mudar para mostrar de todas ao msm tempo
                             JOptionPane.showMessageDialog(null,
                                     "Numero apostado: " + aposta.numeroInseridoPeloUsuario
                                             + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
                                             + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
-                                            + numeroDesmembrado
+                                            + desmembrar(numeroAleatorio,aposta.modalidadeDeJogo)
                                             + "\n\nDesculpe vc errou!!");
 
                             System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
+
+
+                        
+
                         }
+
                     }
 
                 }

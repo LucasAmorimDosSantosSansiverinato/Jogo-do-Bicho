@@ -7,6 +7,8 @@ import Usuario.CarteiraDoUsuario;
 public class Menu {
     public static void main(String[] args) {
 
+
+        Execucao executar= new Execucao();
         var novaCarteira = new CarteiraDoUsuario();
        
 
@@ -19,7 +21,7 @@ public class Menu {
 
             switch (option) {
                 case 0: // Jogar
-                    Execucao.motor();
+                    executar.motor();
 
                     break;
                 case 1: // Depositar

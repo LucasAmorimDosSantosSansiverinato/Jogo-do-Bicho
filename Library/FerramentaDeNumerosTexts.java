@@ -23,7 +23,7 @@ public class FerramentaDeNumerosTexts {
     public static String texto2 = "Qual número você acha que vai ganhar?";
 
     // Validar a entrada do usuário
-    public static String texto2_2 = "Número inválido. Por favor, digite um número entre 1000 e 9999.";
+    public static String texto2_2 = "Número inválido. Por favor, digite um número entre 100 e 999.";
 
     // se o numero apostado for igual ao numero desmebrado
     public static String texto2_3 = "Parabéns, você acertou! O número sorteado foi: Centena: ";

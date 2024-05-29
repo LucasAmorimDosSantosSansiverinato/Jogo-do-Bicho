@@ -5,7 +5,7 @@ import Modelos.Menu;
 
 public class CarteiraDoUsuario {
 
-    private static int carteira = 100;
+    private int carteira = 100;
     private int valorDoTicket = 0;
 
     public int getValorDoTicket() {
