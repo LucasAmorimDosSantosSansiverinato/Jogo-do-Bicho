@@ -13,17 +13,15 @@ public class FerramentaDeNumeros {
     public   int dezena;
     public  int unidade;
     public  int numeroSorteado = numeroAleatorioEmMilhar();
-    public  int premio;
-
     public  int precoTickt;
+
     public  String tipoDeJogo;
     public  int numeroDoUsuario;
 
     // Essa variavel é utulizada em todos os Metodos
     private  boolean entradaValida = false;
 
-    // Variaveis utilidas nos Metodos ValidaEscolhaMilhar e PremiaMilhar
-     public  int numeroApostado   = 0;
+    // Variaveis utilidas nos Metodos ValidaEscolha e Premia
      public  int numeroDesmembrado = 0;
 
      
@@ -95,55 +93,7 @@ public class FerramentaDeNumeros {
         return numeroDoUsuario;
     }
 
-    // Metodo que paga ao usuario o premio dele
-    public  void PremiaGenerico( ) {
-        System.out.println("\nAcessou o metodo PremiaMilhar\n");
-
-        if (numeroDoUsuario == numeroDesmembrado) {
-            // 10 Reais
-            if (Botoes.salvaValor == 0) {
-
-                if (tipoDeJogo.equals("milhar")) {
-
-                    premio += precoTickt * 10000;
-
-                    novaCarteira.depositarPremioNaCarteira(premio);
-
-                    JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-                } else if (tipoDeJogo.equals("centena")) {
-
-                    premio += precoTickt * 1000;
-
-                    novaCarteira.depositarPremioNaCarteira(premio);
-
-                    JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-                }
-                else if (tipoDeJogo.equals("dezena")) {
-
-                    premio += precoTickt * 100;
-
-                    novaCarteira.depositarPremioNaCarteira(premio);
-
-                    JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-                }
-               else if (tipoDeJogo.equals("animal")) {
-
-                    premio += precoTickt * 10;
-
-                    novaCarteira.depositarPremioNaCarteira(premio);
-
-                    JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-                }
-
-            }
-            premio = 0;
-        }
-
-    }
+  
 
     /*
      * Aqui acontece o jogo de Centena onde é relizada valição do numero inserido

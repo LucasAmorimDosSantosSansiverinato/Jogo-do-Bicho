@@ -39,7 +39,7 @@ public class FerramentaDeNumerosTexts {
     public static String texto3="Qual número você acha que vai ganhar?";
 
     // Validar a entrada do usuário
-    public static String texto3_2="Número inválido. Por favor, digite um número entre 1000 e 9999.";
+    public static String texto3_2="Número inválido. Por favor, digite um número entre 10 e 99.";
 
     // se o numero apostado for igual ao numero desmebrado
     public static String texto3_3="Parabéns, você acertou! O número sorteado foi: Dezena: ";

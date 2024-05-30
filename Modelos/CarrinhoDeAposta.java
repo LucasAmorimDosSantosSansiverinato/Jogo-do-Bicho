@@ -2,21 +2,24 @@ package Modelos;
 
 public class CarrinhoDeAposta {
 
-    int numeroInseridoPeloUsuario;
-    int numeroGeradoAleatorio;
-    int valorPagoPeloUsuario;
-    int premioPelaAposta;
-    String modalidadeDeJogo;
+  int numeroInseridoPeloUsuario;
+  int numeroGeradoAleatorio;
+  int valorPagoPeloUsuario;
+  int premioPelaAposta;
+  String modalidadeDeJogo;
 
-    // Contrutor
-      CarrinhoDeAposta(int _numeroInseridoPeloUsuario, String _modalidadeDeJogo, int _valorPagoPeloUsuario) {
-        
-        this.modalidadeDeJogo = _modalidadeDeJogo;
+  // Contrutor
+  CarrinhoDeAposta(int numeroInseridoPeloUsuario, String modalidadeDeJogo, int valorPagoPeloUsuario,
+      int numeroGeradoAleatorio) {
 
-        this.numeroInseridoPeloUsuario = _numeroInseridoPeloUsuario;
+    this.modalidadeDeJogo = modalidadeDeJogo;
 
-        this.valorPagoPeloUsuario = _valorPagoPeloUsuario;
+    this.numeroInseridoPeloUsuario = numeroInseridoPeloUsuario;
 
-    }
+    this.valorPagoPeloUsuario = valorPagoPeloUsuario;
+
+    this.numeroGeradoAleatorio = numeroGeradoAleatorio;
+
+  }
 
 }
