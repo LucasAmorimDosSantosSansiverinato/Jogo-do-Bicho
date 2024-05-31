@@ -210,82 +210,78 @@ public class Execucao {
                     String textoString = "";
 
                     for (var aposta : listaDeApostas) {
-                        
-                        
-                        textoString += "\n--------------------------\nNumero apostado: " + aposta.numeroInseridoPeloUsuario
-                         + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
-                                        + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
-                                        + desmembrar(numeroAleatorio, aposta.modalidadeDeJogo+"\n--------------------------");
 
-                        }
-                        System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
+                        textoString += "\n--------------------------\nNumero apostado: "
+                                + aposta.numeroInseridoPeloUsuario
+                                + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
+                                + desmembrar(numeroAleatorio, aposta.modalidadeDeJogo + "\n--------------------------");
 
-                        JOptionPane.showMessageDialog(null, textoString);
+                    }
+                    System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
 
-                        // Caso o numero sorteado esteja errado
-                        // Esse painel mostra o resultado de uma aposta por vez, quero mudar para
-                        // mostrar de todas ao msm tempo
+                    JOptionPane.showMessageDialog(null, textoString);
 
-                      
+                    // Caso o numero sorteado esteja errado
+                    // Esse painel mostra o resultado de uma aposta por vez, quero mudar para
+                    // mostrar de todas ao msm tempo
 
-                        int resp = JOptionPane.showConfirmDialog(null, "Quer Jogar novamente ", "Confirma Operação!",
-                                JOptionPane.YES_NO_OPTION);
+                    int resp = JOptionPane.showConfirmDialog(null, "Quer Jogar novamente ", "Confirma Operação!",
+                            JOptionPane.YES_NO_OPTION);
 
-                        if (resp == JOptionPane.NO_OPTION) {
-                            System.exit(0);
-                        }
-
+                    if (resp == JOptionPane.NO_OPTION) {
+                        System.exit(0);
                     }
 
                 }
 
             }
+
+            // } // // Metodo que paga ao usuario o premio dele
+            // public int PremiaGenerico() {
+
+            // System.out.println("\nAcessou o metodo PremiaMilhar\n");
+
+            // // 10 Reais
+            // if (Botoes.salvaValor == 0) {
+
+            // if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("milhar"))) {
+
+            // premio += precoTickt * 10000;
+
+            // novaCarteira.depositarPremioNaCarteira(premio);
+
+            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+
+            // } else if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("centena"))) {
+
+            // premio += precoTickt * 1000;
+
+            // novaCarteira.depositarPremioNaCarteira(premio);
+
+            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+
+            // } else if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("dezena"))) {
+
+            // premio += precoTickt * 100;
+
+            // novaCarteira.depositarPremioNaCarteira(premio);
+
+            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+
+            // } else if (f1.tipoDeJogo.equals("animal")) {
+
+            // premio += precoTickt * 10;
+
+            // novaCarteira.depositarPremioNaCarteira(premio);
+
+            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
+
+            // }
+
+            // }
+            // premio = 0;
         }
     }
 
-
-// // // Metodo que paga ao usuario o premio dele
-// public int PremiaGenerico() {
-
-// System.out.println("\nAcessou o metodo PremiaMilhar\n");
-
-// // 10 Reais
-// if (Botoes.salvaValor == 0) {
-
-// if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("milhar"))) {
-
-// premio += precoTickt * 10000;
-
-// novaCarteira.depositarPremioNaCarteira(premio);
-
-// JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-// } else if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("centena"))) {
-
-// premio += precoTickt * 1000;
-
-// novaCarteira.depositarPremioNaCarteira(premio);
-
-// JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-// } else if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("dezena"))) {
-
-// premio += precoTickt * 100;
-
-// novaCarteira.depositarPremioNaCarteira(premio);
-
-// JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-// } else if (f1.tipoDeJogo.equals("animal")) {
-
-// premio += precoTickt * 10;
-
-// novaCarteira.depositarPremioNaCarteira(premio);
-
-// JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-// }
-
-// }
-// premio = 0;
-// }
+}
