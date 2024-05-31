@@ -8,7 +8,7 @@ import Library.BotoesTexts;
 public class Botoes {
 
     // Painel Inicial
-    private static int painelInicial() {
+    private  int painelInicial() {
 
         UIManager.put(BotoesTexts.texto1, BotoesTexts.textos);
         UIManager.put(BotoesTexts.texto1_2, BotoesTexts.texton);
@@ -31,10 +31,10 @@ public class Botoes {
         return painelInicial();
     }
 
-    static int salvaEstiloDeJogo;
+     int salvaEstiloDeJogo;
 
     // estilo de jogo
-    private static int EstiloDeJogo() {
+    private  int EstiloDeJogo() {
         Object[] botao = { BotoesTexts.texto3, BotoesTexts.texto3_2, BotoesTexts.texto3_3, BotoesTexts.texto3_4,
                 BotoesTexts.texto3_5 };
 
@@ -51,7 +51,7 @@ public class Botoes {
         return EstiloDeJogo();
     }
 
-    static int salvaValor;
+     int salvaValor;
     // Valor da aposta
     public int valorDaAposta() {
         Object[] tecla = { BotoesTexts.texto4, BotoesTexts.texto4_2, BotoesTexts.texto4_3, BotoesTexts.texto4_4,
@@ -111,10 +111,10 @@ public class Botoes {
 
 
 
-    public static int salvaNovoJogoFinalizar;
+    public  int salvaNovoJogoFinalizar;
 
      // NovoJogo Finalizar
-     public static int NovoJogoFinalizar() {
+     public  int NovoJogoFinalizar() {
         Object[] botao = {"Novo Jogo", "Ver Jogos" ,"Finalizar"};
 
         int escolha = JOptionPane.showOptionDialog(null, "Desejar Finalizar e ver o resultado da aposta ou adicionar mais uma aposta?",

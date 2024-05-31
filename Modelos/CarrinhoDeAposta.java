@@ -2,15 +2,19 @@ package Modelos;
 
 public class CarrinhoDeAposta {
 
+  FerramentaDeNumeros f1 = new FerramentaDeNumeros();
+  Execucao ex = new Execucao();
+
   int numeroInseridoPeloUsuario;
   int numeroGeradoAleatorio;
   int valorPagoPeloUsuario;
   int premioPelaAposta;
   String modalidadeDeJogo;
+  String mensagemFinal;
 
   // Contrutor
-  CarrinhoDeAposta(int numeroInseridoPeloUsuario, String modalidadeDeJogo, int valorPagoPeloUsuario,
-      int numeroGeradoAleatorio) {
+  CarrinhoDeAposta(int numeroInseridoPeloUsuario, String modalidadeDeJogo, int valorPagoPeloUsuario
+      ) {
 
     this.modalidadeDeJogo = modalidadeDeJogo;
 
@@ -18,8 +22,31 @@ public class CarrinhoDeAposta {
 
     this.valorPagoPeloUsuario = valorPagoPeloUsuario;
 
-    this.numeroGeradoAleatorio = numeroGeradoAleatorio;
+  
 
   }
+
+  @Override
+  public String toString() {
+
+    return  "Numero apostado: " + numeroInseridoPeloUsuario
+    + "\nEstilo de Jogo: " + modalidadeDeJogo
+    + "\nValor pago: " + valorPagoPeloUsuario + "\n\n\nResultado: "
+    + ex.desmembrar(f1.numeroAleatorioEmMilhar(), modalidadeDeJogo);
+  }
+
+
+  // public String PainelGeral() {
+
+  //   FerramentaDeNumeros f1 = new FerramentaDeNumeros();
+  //   Execucao ex = new Execucao();
+
+    
+  //   // String mensagemVerjogos = "Numero apostado: " + numeroInseridoPeloUsuario
+  //   //     + "\nEstilo de Jogo: " + modalidadeDeJogo + "\nValor pago: "
+  //   //     + valorPagoPeloUsuario;
+
+  //   return mensagemGeral;
+  // }
 
 }

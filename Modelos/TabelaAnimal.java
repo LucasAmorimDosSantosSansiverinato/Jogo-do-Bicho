@@ -35,6 +35,7 @@ public class TabelaAnimal extends JFrame {
     public static void main(String[] args) {
 
         var novaCarteira = new CarteiraDoUsuario();
+        Botoes novoBotao= new Botoes();
        
         
 
@@ -83,19 +84,19 @@ public class TabelaAnimal extends JFrame {
             
 
             // 10 Reais
-            if (Botoes.salvaValor == 0) {
+            if (novoBotao.salvaValor == 0) {
                 premio += 20;
               novaCarteira.depositarPremioNaCarteira(premio);
             } // 20 reais
-            else if (Botoes.salvaValor == 1) {
+            else if (novoBotao.salvaValor == 1) {
                 premio += 40;
                 novaCarteira.depositarPremioNaCarteira(premio);
             } // 30 reais
-            else if (Botoes.salvaValor == 2) {
+            else if (novoBotao.salvaValor == 2) {
                 premio += 60;
                 novaCarteira.depositarPremioNaCarteira(premio);
             } // 40 reais
-            else if (Botoes.salvaValor == 3) {
+            else if (novoBotao.salvaValor == 3) {
                 premio += 80;
                 novaCarteira.depositarPremioNaCarteira(premio);
             }
