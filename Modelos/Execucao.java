@@ -210,8 +210,8 @@ public class Execucao {
                     String textoString = "";
 
                     for (var aposta : listaDeApostas) {
-
-                        textoString += "\n--------------------------\nNumero apostado: "
+                        
+                textoString += "\n--------------------------\nNumero apostado: "
                                 + aposta.numeroInseridoPeloUsuario
                                 + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
                                 + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
