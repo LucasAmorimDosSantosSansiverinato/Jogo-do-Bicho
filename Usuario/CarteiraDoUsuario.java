@@ -5,8 +5,9 @@ import Modelos.Menu;
 
 public class CarteiraDoUsuario {
 
-    private int carteira = 100;
-    private int valorDoTicket = 0;
+    public int carteira;
+
+    public int valorDoTicket = 0;
 
     public int getValorDoTicket() {
         return valorDoTicket;
@@ -29,7 +30,7 @@ public class CarteiraDoUsuario {
 
         carteira -= getValorDoTicket;
 
-        System.out.println("Saldo atual: " + carteira);
+        System.out.println("Saldo depois de pagar para jogar: " + carteira);
 
         return carteira;
 
@@ -48,7 +49,7 @@ public class CarteiraDoUsuario {
     // usuario realiza deposito
     public void alterarSaldo(int valor) {
         carteira = +valor;
-        System.out.println("Saldo atual: " + carteira);
+        System.out.println("Saldo depois do deposito: " + getCarteira());
     }
 
     public void depositarSaldoNaConta() {

@@ -8,7 +8,8 @@ public class Menu {
     public static void main(String[] args) {
 
 
-        Execucao executar= new Execucao();
+        Execucao executar = new Execucao(); 
+
         var novaCarteira = new CarteiraDoUsuario();
        
 
@@ -21,11 +22,15 @@ public class Menu {
 
             switch (option) {
                 case 0: // Jogar
+                    int saldo = novaCarteira.getCarteira();
+
+                    executar.alterarSaldo ( saldo );
                     executar.motor();
 
                     break;
                 case 1: // Depositar
                     novaCarteira.depositarSaldoNaConta();
+                    executar.alterarSaldo(novaCarteira.getCarteira());
 
                     break;
                 case 2: // Ver Saldo

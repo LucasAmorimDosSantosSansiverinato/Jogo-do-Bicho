@@ -8,12 +8,13 @@ import Usuario.CarteiraDoUsuario;
 public class Execucao {
     public int premio;
     public int precoTickt;
+    public int saldo;
 
     public ArrayList<CarrinhoDeAposta> listaDeApostas = new ArrayList<>();
 
-    // public void zerarApostas(){
-    // listaDeApostas=null;
-    // }
+    public void alterarSaldo(int saldo) {
+        this.saldo += saldo;
+    }
 
     public int desmembrar(int num, String tipo) {
 
@@ -22,12 +23,20 @@ public class Execucao {
 
         if (tipo.equals("dezena")) {
 
+            //// JOptionPane.showMessageDialog(null, tipo + " " + str);
+
             resultado = str.substring(str.length() - 2, str.length());
 
         } else if (tipo.equals("centena")) {
+
+            // JOptionPane.showMessageDialog(null, tipo + " " + str);
+
             resultado = str.substring(str.length() - 3, str.length());
 
         } else {
+
+            // JOptionPane.showMessageDialog(null, tipo + " " + str);
+
             resultado = str.substring(str.length() - 4, str.length());
         }
 
@@ -49,12 +58,12 @@ public class Execucao {
         boolean novojogo = false;
 
         String tipo = null;
-
+        String textoString = "";
         while (true) {
 
             // informa que o usuario esta sem saldo
 
-            if (novaCarteira.getCarteira() <= 0) {
+            if (saldo <= 0) {
 
                 JOptionPane.showMessageDialog(null, "Necessário fazer o depósito primeiro! Error!");
                 System.exit(0);
@@ -148,9 +157,6 @@ public class Execucao {
                     // Volta para o Menu
                     Menu.main(null);
                     break;
-
-                default:
-
             }
 
             // Opção para mostrar o resultado da aposta em Animal
@@ -168,8 +174,9 @@ public class Execucao {
                                 "Que pena! Você perdeu! O animal sorteado foi: " + TabelaAnimal.mostraAnimalSorteado);
                     }
                 }
-                // Opção para mostrar o resultado da aposta em Numeros
-            } else if (tipo.equals("numero")) {
+            }
+
+            else {
 
                 CarrinhoDeAposta novaAposta = new CarrinhoDeAposta(f1.numeroDoUsuario,
                         f1.tipoDeJogo, f1.precoTickt);
@@ -181,107 +188,76 @@ public class Execucao {
                                     + aposta.modalidadeDeJogo);
                 }
 
-                novoBotao.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver
-                                              // Jogos) = 1 , (Finalizar) = 2
-
+                //
+                //
+                novoBotao.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver Jogos) = 1 , (Finalizar) = 2
+                //
+                //                                              
                 if (novoBotao.salvaNovoJogoFinalizar == 0) {
                     novojogo = true;
 
                 } else if (novoBotao.salvaNovoJogoFinalizar == 1) {
 
-                    for (var VerAposta : listaDeApostas) {
-
-                        // Mostra ao usuario as apostas feitas antes de Finalizar
-                        JOptionPane.showMessageDialog(null,
-                                "Numero apostado: " + VerAposta.numeroInseridoPeloUsuario
-                                        + "\nEstilo de Jogo: " + VerAposta.modalidadeDeJogo + "\nValor pago: "
-                                        + VerAposta.valorPagoPeloUsuario);
-
-                        novojogo = true;
-                    }
-                }
-
-                // Opção para Finalizar e mostrar o resultado das apostas
-                else if (novoBotao.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a
-                                                               // ação
-                {
-                    System.out.println("\nAcessou o painel Finalizar\n");
-
-                    String textoString = "";
-
                     for (var aposta : listaDeApostas) {
 
-                        textoString += "\n--------------------------\nNumero apostado: "
-                                + aposta.numeroInseridoPeloUsuario
-                                + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
-                                + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
-                                + desmembrar(numeroAleatorio, aposta.modalidadeDeJogo + "\n--------------------------");
+                        int numfinal = desmembrar(numeroAleatorio, aposta.modalidadeDeJogo);
+
+                        if (aposta.numeroInseridoPeloUsuario != 0) {
+                            textoString += "\n--------------------------\nNumero apostado: "
+                                    + aposta.numeroInseridoPeloUsuario
+                                    + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                    + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
+                                    + numfinal;
+                        }
 
                     }
-                    System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
-
                     JOptionPane.showMessageDialog(null, textoString);
-
-                    // Caso o numero sorteado esteja errado
-                    // Esse painel mostra o resultado de uma aposta por vez, quero mudar para
-                    // mostrar de todas ao msm tempo
-
-                    int resp = JOptionPane.showConfirmDialog(null, "Quer Jogar novamente ", "Confirma Operação!",
-                            JOptionPane.YES_NO_OPTION);
-
-                    if (resp == JOptionPane.NO_OPTION) {
-                        System.exit(0);
-                    }
-
                 }
 
+                if (saldo >= 10) {
+
+                    if (novoBotao.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a
+                                                              // ação
+                    {
+                        System.out.println("\nAcessou o painel Finalizar\n");
+
+                        for (var aposta : listaDeApostas) {
+
+                            int numfinal = desmembrar(numeroAleatorio, aposta.modalidadeDeJogo);
+
+                            // JOptionPane.showMessageDialog(null, numeroAleatorio + " " +
+                            // aposta.modalidadeDeJogo + " " + numfinal);
+
+                            if (aposta.numeroInseridoPeloUsuario != 0) {
+                                textoString += "\n--------------------------\nNumero apostado: "
+                                        + aposta.numeroInseridoPeloUsuario
+                                        + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
+                                        + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
+                                        + numfinal;
+                            }
+
+                        }
+                        JOptionPane.showMessageDialog(null, textoString);
+
+                        System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
+
+                        int resp = JOptionPane.showConfirmDialog(null, "Quer Jogar novamente ", "Confirma Operação!",
+                                JOptionPane.YES_NO_OPTION);
+
+                        if (resp == JOptionPane.NO_OPTION) {
+                            System.exit(0);
+                        } else {
+                            listaDeApostas.clear();
+                            textoString = ""; // Resetar o texto para novas apostas
+                            System.out
+                                    .println("Lista de apostas foi esvaziada. Tamanho atual: " + listaDeApostas.size());
+                        }
+                    }
+                }
             }
 
-            // } // // Metodo que paga ao usuario o premio dele
-            // public int PremiaGenerico() {
+        } // fim do while
 
-            // System.out.println("\nAcessou o metodo PremiaMilhar\n");
+    }// fim do metodo motor
 
-            // // 10 Reais
-            // if (Botoes.salvaValor == 0) {
-
-            // if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("milhar"))) {
-
-            // premio += precoTickt * 10000;
-
-            // novaCarteira.depositarPremioNaCarteira(premio);
-
-            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-            // } else if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("centena"))) {
-
-            // premio += precoTickt * 1000;
-
-            // novaCarteira.depositarPremioNaCarteira(premio);
-
-            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-            // } else if (aposta.modalidadeDeJogo.equals(f1.desmembrarNumero("dezena"))) {
-
-            // premio += precoTickt * 100;
-
-            // novaCarteira.depositarPremioNaCarteira(premio);
-
-            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-            // } else if (f1.tipoDeJogo.equals("animal")) {
-
-            // premio += precoTickt * 10;
-
-            // novaCarteira.depositarPremioNaCarteira(premio);
-
-            // JOptionPane.showMessageDialog(null, "Parabens vc ganhou " + premio);
-
-            // }
-
-            // }
-            // premio = 0;
-        }
-    }
-
-}
+}// fim da classe
