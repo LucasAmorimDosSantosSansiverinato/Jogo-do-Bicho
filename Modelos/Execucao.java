@@ -9,6 +9,7 @@ public class Execucao {
     public int premio;
     public int precoTickt;
     public int saldo;
+    public int painelNovoJogo = 1;
 
     public ArrayList<CarrinhoDeAposta> listaDeApostas = new ArrayList<>();
 
@@ -59,6 +60,7 @@ public class Execucao {
 
         String tipo = null;
         String textoString = "";
+
         while (true) {
 
             // informa que o usuario esta sem saldo
@@ -188,15 +190,22 @@ public class Execucao {
                                     + aposta.modalidadeDeJogo);
                 }
 
-                //
-                //
-                novoBotao.NovoJogoFinalizar();// Aqui é chamado o Painel onde aparece os botões (Novo Jogo) = 0 , (Ver Jogos) = 1 , (Finalizar) = 2
-                //
-                //                                              
-                if (novoBotao.salvaNovoJogoFinalizar == 0) {
-                    novojogo = true;
+               
+               int opcao =  0;
+               
+                
+                while ( opcao != 2 ) {
 
-                } else if (novoBotao.salvaNovoJogoFinalizar == 1) {
+                   opcao =novoBotao.NovoJogoFinalizar();
+
+
+                if ( opcao  == 0) {
+                    novojogo = true;
+                    break;
+
+                } else if ( opcao == 1) {
+
+                    textoString="";
 
                     for (var aposta : listaDeApostas) {
 
@@ -208,18 +217,21 @@ public class Execucao {
                                     + "\nEstilo de Jogo: " + aposta.modalidadeDeJogo + "\nValor pago: "
                                     + aposta.valorPagoPeloUsuario + "\n\n\nResultado: "
                                     + numfinal;
+
                         }
 
                     }
                     JOptionPane.showMessageDialog(null, textoString);
+ 
                 }
 
                 if (saldo >= 10) {
 
-                    if (novoBotao.salvaNovoJogoFinalizar == 2)// Aqui é utilizado o valor dos botões para autorizar a
+                    if ( opcao  == 2)// Aqui é utilizado o valor dos botões para autorizar a
                                                               // ação
                     {
                         System.out.println("\nAcessou o painel Finalizar\n");
+                        textoString="";
 
                         for (var aposta : listaDeApostas) {
 
@@ -237,6 +249,7 @@ public class Execucao {
                             }
 
                         }
+                        painelNovoJogo = 0;
                         JOptionPane.showMessageDialog(null, textoString);
 
                         System.out.println("Numero que o usuario digitou: " + numeroEscolhido);
@@ -253,6 +266,8 @@ public class Execucao {
                                     .println("Lista de apostas foi esvaziada. Tamanho atual: " + listaDeApostas.size());
                         }
                     }
+                } // fim do while opcao 2
+ 
                 }
             }
 

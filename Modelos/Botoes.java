@@ -109,9 +109,7 @@ public class Botoes {
         return yesOrNo;
     }
 
-
-
-    public  int salvaNovoJogoFinalizar;
+ 
 
      // NovoJogo Finalizar
      public  int NovoJogoFinalizar() {
@@ -122,7 +120,7 @@ public class Botoes {
                 null,
                 botao, botao[0]);
 
-                salvaNovoJogoFinalizar=escolha;
+               
                 
         return escolha;
 
