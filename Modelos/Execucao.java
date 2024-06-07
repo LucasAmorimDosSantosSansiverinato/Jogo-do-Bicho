@@ -10,7 +10,7 @@ public class Execucao {
     public int precoTickt;
     
     public int painelNovoJogo = 1;
-    public String classeDeJogo="";
+    public String classeDeJogo=""; 
 
     public ArrayList<CarrinhoDeAposta> listaDeApostas = new ArrayList<>();
 
