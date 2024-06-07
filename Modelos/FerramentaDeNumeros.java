@@ -8,29 +8,27 @@ import Usuario.CarteiraDoUsuario;
 
 public class FerramentaDeNumeros {
 
-    public  int milhar;
-    public  int centena;
-    public   int dezena;
-    public  int unidade;
-    public  int numeroSorteado = numeroAleatorioEmMilhar();
-    public  int precoTickt;
+    public int milhar;
+    public int centena;
+    public int dezena;
+    public int unidade;
+    public int numeroSorteado = numeroAleatorioEmMilhar();
+    public int precoTickt;
 
-    public  String tipoDeJogo;
-    public  int numeroDoUsuario;
+    public String tipoDeJogo;
+    public int numeroDoUsuario;
 
     // Essa variavel é utulizada em todos os Metodos
-    private  boolean entradaValida = false;
+    private boolean entradaValida = false;
 
     // Variaveis utilidas nos Metodos ValidaEscolha e Premia
-     public  int numeroDesmembrado = 0;
+    public int numeroDesmembrado = 0;
 
-     
-    public  CarteiraDoUsuario novaCarteira = new CarteiraDoUsuario();
-    public  Botoes novoBotao = new Botoes();
+    public CarteiraDoUsuario novaCarteira = new CarteiraDoUsuario();
+    public Botoes novoBotao = new Botoes();
 
-     
     // Aqui é gerado o numero aleatorio
-    public  int numeroAleatorioEmMilhar() {
+    public int numeroAleatorioEmMilhar() {
         // Random aleatorio = new Random();
 
         int numeroAleatorioEmMilhar = 5263; // aleatorio.nextInt(9000) + 1000;
@@ -42,7 +40,7 @@ public class FerramentaDeNumeros {
      * recebe um numero aleatorio e desmebra ele para ser usando nas validações de
      * Milhar, Centena, Dezena
      */
-    public  int desmembrarNumero ( String tipo ) {
+    public int desmembrarNumero(String tipo) {
         tipoDeJogo = tipo;
 
         if (tipo.equals("milhar")) {
@@ -71,19 +69,17 @@ public class FerramentaDeNumeros {
      * Aqui acontece o jogo de milhar onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public  int ValidaEscolhaMilhar() {
+    public int ValidaEscolhaMilhar() {
 
         do { // Valida escolha Milhar
             numeroDoUsuario = Integer
                     .parseInt(JOptionPane.showInputDialog(null, FerramentaDeNumerosTexts.texto1));
 
-            
-
             // Validar a entrada do usuário
             if (numeroDoUsuario < 1000 || numeroDoUsuario > 9999) {
                 JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto1_2);
 
-                numeroDoUsuario=0;
+                numeroDoUsuario = 0;
 
             } else {
                 entradaValida = true;
@@ -93,26 +89,22 @@ public class FerramentaDeNumeros {
         return numeroDoUsuario;
     }
 
-  
-
     /*
      * Aqui acontece o jogo de Centena onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public  int ValidaEscolhaCentena() {
+    public int ValidaEscolhaCentena() {
 
         do { // Valida escolha Centena
             numeroDoUsuario = Integer
                     .parseInt(JOptionPane.showInputDialog(null, FerramentaDeNumerosTexts.texto2));
 
-
-
             // Validar a entrada do usuário
             if (numeroDoUsuario < 100 || numeroDoUsuario > 999) {
                 JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto2_2);
 
-                numeroDoUsuario=0;
-            
+                numeroDoUsuario = 0;
+
             } else {
                 entradaValida = true;
             }
@@ -125,20 +117,18 @@ public class FerramentaDeNumeros {
      * Aqui acontece o jogo de Dezena onde é relizada valição do numero inserido
      * pelo usuario, a compração dos numeros e tambem para o usuario
      */
-    public  int ValidaEscolhaDezena() {
+    public int ValidaEscolhaDezena() {
 
         do {
             // Valida escolha Dezena
             numeroDoUsuario = Integer
                     .parseInt(JOptionPane.showInputDialog(null, FerramentaDeNumerosTexts.texto3));
 
-            
-
             // Validar a entrada do usuário
             if (numeroDoUsuario < 10 || numeroDoUsuario > 99) {
                 JOptionPane.showMessageDialog(null, FerramentaDeNumerosTexts.texto3_2);
 
-                numeroDoUsuario=0;
+                numeroDoUsuario = 0;
 
             } else {
                 entradaValida = true;
@@ -149,7 +139,7 @@ public class FerramentaDeNumeros {
         // PremiaDezena(numeroAleatorioEmMilhar);
     }
 
-    public  void resultadoDeTodosOsJogos(int numeroAleatorioEmMilhar) {
+    public void resultadoDeTodosOsJogos(int numeroAleatorioEmMilhar) {
 
         JOptionPane.showMessageDialog(null,
                 FerramentaDeNumerosTexts.texto3_5 + numeroAleatorioEmMilhar + FerramentaDeNumerosTexts.texto3_5_6
@@ -163,36 +153,36 @@ public class FerramentaDeNumeros {
      * 10, 20, 30, 40
      */
 
-    public  int valorDosJogos() {
+    public void valorDosJogos ( CarteiraDoUsuario novaCarteira) {
         var novoBotao = new Botoes();
-        var novaCarteira = new CarteiraDoUsuario();
+        
 
         switch (novoBotao.valorDaAposta()) {
             case 0:
 
                 // Cobrar um valor da cateira toda vez que paga para jogar
-                novaCarteira.debitarDaCarteira(novaCarteira.getCarteira(), FerramentaDeNumerosTexts.number1);
+                novaCarteira.debitarDaCarteira(FerramentaDeNumerosTexts.number1);
 
                 precoTickt = 10;
                 break;
             case 1:
 
                 // Cobrar um valor da cateira toda vez que paga para jogar
-                novaCarteira.debitarDaCarteira(novaCarteira.getCarteira(), FerramentaDeNumerosTexts.number2);
+                novaCarteira.debitarDaCarteira(FerramentaDeNumerosTexts.number2);
 
                 precoTickt = 20;
                 break;
             case 2:
 
                 // Cobrar um valor da cateira toda vez que paga para jogar
-                novaCarteira.debitarDaCarteira(novaCarteira.getCarteira(), FerramentaDeNumerosTexts.number3);
+                novaCarteira.debitarDaCarteira(FerramentaDeNumerosTexts.number3);
 
                 precoTickt = 30;
                 break;
             case 3:
 
                 // Cobrar um valor da cateira toda vez que paga para jogar
-                novaCarteira.debitarDaCarteira(novaCarteira.getCarteira(), FerramentaDeNumerosTexts.number4);
+                novaCarteira.debitarDaCarteira(FerramentaDeNumerosTexts.number4);
 
                 precoTickt = 40;
                 break;
@@ -207,8 +197,6 @@ public class FerramentaDeNumeros {
                 break;
         }
 
-        return precoTickt;
-
-    }
+      }
 
 }

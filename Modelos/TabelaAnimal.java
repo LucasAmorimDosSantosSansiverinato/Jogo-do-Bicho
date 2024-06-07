@@ -14,13 +14,13 @@ import java.awt.Font;
    //  import java.util.Random;
 
 public class TabelaAnimal extends JFrame {
-    static int premio;
+   public static int premio;
 
-    static String mostraAnimalSorteado="";
+   public static String mostraAnimalSorteado="";
 
-    static int numeroDoAnimalSorteado;
+   public static int numeroDoAnimalSorteado;
 
-    static int numeroQueUsuarioEscolheu;
+   public static int numeroQueUsuarioEscolheu;
 
     private static final String[] ANIMAIS = {
             "Avestruz", "Águia", "Burro", "Borboleta", "Cachorro",
@@ -34,7 +34,7 @@ public class TabelaAnimal extends JFrame {
     // Método principal
     public static void main(String[] args) {
 
-        var novaCarteira = new CarteiraDoUsuario();
+      
         Botoes novoBotao= new Botoes();
        
         
@@ -79,31 +79,7 @@ public class TabelaAnimal extends JFrame {
         // Validar a escolha da dezena
         String dezenaSorteada = validarEscolhaDezena(numeroSorteado);
 
-        // Exibir o resultado
-        if (aposta.equalsIgnoreCase(dezenaSorteada)) {
-            
-
-            // 10 Reais
-            if (novoBotao.salvaValor == 0) {
-                premio += 20;
-              novaCarteira.depositarPremioNaCarteira(premio);
-            } // 20 reais
-            else if (novoBotao.salvaValor == 1) {
-                premio += 40;
-                novaCarteira.depositarPremioNaCarteira(premio);
-            } // 30 reais
-            else if (novoBotao.salvaValor == 2) {
-                premio += 60;
-                novaCarteira.depositarPremioNaCarteira(premio);
-            } // 40 reais
-            else if (novoBotao.salvaValor == 3) {
-                premio += 80;
-                novaCarteira.depositarPremioNaCarteira(premio);
-            }
-
-            
-
-        } 
+       
     }
 
     // Método para exibir a tabela de animais com seus respectivos números
