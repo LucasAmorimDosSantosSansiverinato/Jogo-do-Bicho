@@ -7,7 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Usuario.CarteiraDoUsuario;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -33,11 +33,6 @@ public class TabelaAnimal extends JFrame {
 
     // Método principal
     public static void main(String[] args) {
-
-      
-        Botoes novoBotao= new Botoes();
-       
-        
 
         // Exibir a tabela de animais com seus respectivos números
         exibirTabela();
@@ -76,8 +71,7 @@ public class TabelaAnimal extends JFrame {
             }
         }
 
-        // Validar a escolha da dezena
-        String dezenaSorteada = validarEscolhaDezena(numeroSorteado);
+      
 
        
     }

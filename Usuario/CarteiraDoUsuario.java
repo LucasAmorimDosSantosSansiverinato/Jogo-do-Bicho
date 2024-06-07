@@ -1,8 +1,5 @@
 package Usuario;
 
-
-import Modelos.Menu;
-
 public class CarteiraDoUsuario {
 
     public int carteira = 0;

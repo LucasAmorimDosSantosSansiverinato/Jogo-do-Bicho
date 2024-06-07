@@ -2,7 +2,6 @@ package Modelos;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import Library.ExecutarTexts;
 import Usuario.CarteiraDoUsuario;
 
 public class Execucao {
