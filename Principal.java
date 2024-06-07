@@ -14,7 +14,7 @@ public class Principal {
  System.out.println("Acessou o Principal\n");
 
 
-        Botoes novoBotao = new Botoes();
+        Botoes novoBotao = new Botoes(); 
 
         int primeiroPainel = novoBotao.getPalnelInicial();
 
